@@ -41,7 +41,7 @@ static ngx_int_t ngx_http_mytest_handler(ngx_http_request_t *r)
     b->file->fd = ngx_open_file(filename, NGX_FILE_RDONLY|NGX_FILE_NONBLOCK, NGX_FILE_OPEN, 0);
     b->file->log = r->connection->log; // 日志对象
     b->file->name.data = filename;
-    b->file->name.len = sizeof(filename) - 1;
+    b->file->name.len = strlen((const char*)filename);
     if (b->file->fd <= 0)
     {
         return NGX_HTTP_NOT_FOUND;
